@@ -7,10 +7,10 @@ class GameController < ApplicationController
         @board = Array.new(15){Array.new(15)}
 
         @steps.each { |step|
-            @board[step.coord_x][step.coord_y] = step.player_type
+            @board[step.coord_y][step.coord_x] = step.player_type
         }
 
-        render json: @board
+        render json: {board: @board}
     end
 
 end
