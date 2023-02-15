@@ -10,7 +10,12 @@ class GameController < ApplicationController
             @board[step.coord_y][step.coord_x] = step.player_type
         }
 
-        render json: {board: @board}
+        @next_turn = (@steps.last && @steps.last.player_type == "x") ? "o" : "x"
+
+        render json: {
+            board: @board,
+            turn: @next_turn
+        }
     end
 
 end
